@@ -56,31 +56,31 @@ Project type: **client's project**
 
 # Details
 
-The project have a service dynamic form, who redirects to stripe checkout.\r
-\r
-The landing page include the following sections:\r
-* Header\r
-* Hero\r
-* Buy form\r
-* Our services\r
-* Footer\r
-\r
+The project have a service dynamic form, who redirects to stripe checkout.
+
+The landing page include the following sections:
+* Header
+* Hero
+* Buy form
+* Our services
+* Footer
+
 The buy form user dynamic data, like prices or available hotels, updated by the user in the same dashboard as the project EZBookingTours Store.
 
 # Roadmap
 
-* [x] Layout and responsive\r
-* [x] Select transport type\r
-* [x] Custom tailwind colors\r
-* [x] Dynamic arriving and departing forms\r
-* [x] React hooks\r
-* [x] Redirect to stripe checkout\r
-* [x] Custom scroll bar\r
-* [x] Hover effects\r
-* [x] Auto deploy with github pages\r
-* [x] Custom domain\r
-* [x] Loading spinner\r
-* [x] Airbnb options\r
+* [x] Layout and responsive
+* [x] Select transport type
+* [x] Custom tailwind colors
+* [x] Dynamic arriving and departing forms
+* [x] React hooks
+* [x] Redirect to stripe checkout
+* [x] Custom scroll bar
+* [x] Hover effects
+* [x] Auto deploy with github pages
+* [x] Custom domain
+* [x] Loading spinner
+* [x] Airbnb options
 * [x] Connect to django dashboard
 
 
