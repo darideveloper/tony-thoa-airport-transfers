@@ -1,5 +1,5 @@
-<div><a href='https://github.com/github.com/darideveloper/blob/master/LICENSE' target='_blank'>
-            <img src='https://img.shields.io/github/license/github.com/darideveloper.svg?style=for-the-badge' alt='MIT License' height='30px'/>
+<div><a href='https://github.com/darideveloper/rivieramayaairporttransfers/blob/master/LICENSE' target='_blank'>
+            <img src='https://img.shields.io/github/license/darideveloper/rivieramayaairporttransfers.svg?style=for-the-badge' alt='MIT License' height='30px'/>
         </a><a href='https://www.linkedin.com/in/francisco-dari-hernandez-6456b6181/' target='_blank'>
                 <img src='https://img.shields.io/static/v1?style=for-the-badge&message=LinkedIn&color=0A66C2&logo=LinkedIn&logoColor=FFFFFF&label=' alt='Linkedin' height='30px'/>
             </a><a href='https://t.me/darideveloper' target='_blank'>
@@ -20,11 +20,7 @@ Visit at: **[rivieramayaairporttransfers.com](https://rivieramayaairporttransfer
 
 Landing page with integrated payments for Airport Transfers services
 
-Start date: **2023-04-27**
-
-Last update: **2023-05-11**
-
-Project type: **client's project**
+Project type: **client**
 
 </div><br><details>
             <summary>Table of Contents</summary>
@@ -82,5 +78,4 @@ The buy form user dynamic data, like prices or available hotels, updated by the 
 * [x] Loading spinner
 * [x] Airbnb options
 * [x] Connect to django dashboard
-
 
