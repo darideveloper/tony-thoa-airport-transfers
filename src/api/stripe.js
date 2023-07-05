@@ -1,5 +1,4 @@
 import Swal from 'sweetalert2'
-import 'sweetalert2/src/sweetalert2.scss'
 
 const stripeApi = "https://stripe-api-flask.herokuapp.com/"
 const stripeUser = "rivieramayaairporttransfers"

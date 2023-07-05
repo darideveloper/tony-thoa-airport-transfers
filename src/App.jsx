@@ -1,3 +1,5 @@
+import 'sweetalert2/src/sweetalert2.scss'
+
 import Header from './sections/header'
 import Hero from './sections/hero'
 import Form from './sections/form'
