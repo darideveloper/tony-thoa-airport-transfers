@@ -43,8 +43,11 @@ export default function VipCode() {
     >
       <fieldset
         className={`
-          w-5/12
-          flex items-center justify-center
+          w-full
+          flex items-start justify-center flex-col
+          md:w-8/12 md:flex-row
+          sm:w-10/12
+          lg:w-5/12
         `}
       >
         <Input
@@ -58,7 +61,8 @@ export default function VipCode() {
 
         <div className={`
             wrapper-submit
-            mt-10 ml-5 w-32
+            w-32
+            md:mt-10 md:ml-5 
           `}>
           <SubmitBtn 
             value='Check'
