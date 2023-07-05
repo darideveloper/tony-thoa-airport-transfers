@@ -1,22 +1,23 @@
 import Swal from 'sweetalert2'
 import Input from './input'
 import { useState } from 'react'
+import { useContext } from 'react'
 
 import SubmitBtn from './submit-btn'
 import Spinner from './spinner'
 
 import { validateVipCode } from '../api/vip-code'
+import VipCodeContext from '../context/vip-code'
 
 export default function VipCode() {
 
-  const [vipCode, setVipCode] = useState('')
+  const { vipCode, setVipCode } = useContext(VipCodeContext)
   const [isLoading, setIsLoading] = useState(false)
 
   function handleSubmit(e) {
 
     // Show spinner while loading
     setIsLoading(true)
-    console.log({ isLoading })
 
     e.preventDefault()
 

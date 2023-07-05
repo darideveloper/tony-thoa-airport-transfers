@@ -3,17 +3,23 @@ import Swal from 'sweetalert2'
 const stripeApi = "https://stripe-api-flask.herokuapp.com/"
 const stripeUser = "rivieramayaairporttransfers"
 
-function alertError() {
-  // Alert error for api call
-  Swal.fire({
-    icon: 'error',
-    title: 'Oops...',
-    text: 'Something went wrong!',
-    footer: 'Try again later'
-  })
-}
 
-export async function submitStripe(activeTransportType, serviceName, servicePrice, loading, setLoading) {
+import LoadContext from '../context/load'
+import { useContext } from 'react'
+
+export async function submitStripe(serviceName, servicePrice, name, lastName, vipCode) {
+  
+  function alertError() {
+    // Alert error for api call
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Something went wrong!',
+      footer: 'Try again later'
+    })
+  }
+  
+  const { loading, setLoading } = useContext(LoadContext)
 
   // Toggle loading status
   setLoading(!loading)

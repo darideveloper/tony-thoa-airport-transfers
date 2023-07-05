@@ -19,11 +19,13 @@ import { getAirbnbMunicipalities } from "../api/airbnb-municipality"
 
 // Context
 import LoadContext from '../context/load'
+import VipCodeContext from '../context/vip-code'
 import { useContext } from 'react'
 
 export default function Form() {
 
   const { loading, setLoading } = useContext(LoadContext)
+  const { vipCode } = useContext(VipCodeContext)
 
   const [transports, setTransports] = useState([])
   const [activeTransportType, setActiveTransportType] = useState('Arriving')
@@ -62,6 +64,8 @@ export default function Form() {
   }
 
   function handleSubmit(e) {
+    
+    console.log ({vipCode})
 
     // Don't submit form
     e.preventDefault()
@@ -70,8 +74,9 @@ export default function Form() {
     const currentService = transports.find(transport => transport.id == activeTransportType)
     const serviceName = currentService.text
 
+
     // Submit to stripe
-    submitStripe(activeTransportType, serviceName, total, loading, setLoading)
+    submitStripe(serviceName, total, name, lastName, vipCode)
   }
 
   useEffect(() => {
