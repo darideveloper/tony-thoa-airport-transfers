@@ -62,8 +62,7 @@ export default function VipCode() {
           `}>
           <SubmitBtn 
             value='Check'
-            py={2}
-            w={32}
+            extraClass={`w-32 py-2`}
           />
         </div>
       </fieldset>

@@ -308,7 +308,7 @@ export default function Form() {
           `}>
           <SubmitBtn
             value={"Buy Now"}
-            extraClass="mx-auto"
+            extraClass={`w-48 py-3`}
           />
         </div>
 
