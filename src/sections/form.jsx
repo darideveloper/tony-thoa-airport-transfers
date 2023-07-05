@@ -8,6 +8,8 @@ import Input from "../components/input"
 import Select from "../components/select"
 import Fieldset from "../components/fieldset"
 import FormText from "../components/form-text"
+import VipCode from "../components/vip-code"
+import SubmitBtn from "../components/submit-btn"
 
 // Api
 import { getHotels } from "../api/hotels"
@@ -208,6 +210,8 @@ export default function Form() {
         text='Transportation Options'
       />
 
+      <VipCode />
+
       <form action="." method="post" className="mx-auto" onSubmit={e => { handleSubmit(e) }}>
         <TransportTypes
           handleUpdateType={handleUpdateType}
@@ -296,7 +300,17 @@ export default function Form() {
             {total}.00 USD
           </span>
         </p>
-        <input type="submit" value="Buy Now" className="no-collect w-48 mx-auto mt-10 block bg-blue border-blue border-2 text-gold py-3 text-2xl font-bold cursor-pointer rounded-xl transition-all duration-300 hover:rounded-3xl hover:bg-white hover:text-blue" />
+
+        <div 
+          className={`
+            wrapper-submit
+            flex items-center justify-center mt-10
+          `}>
+          <SubmitBtn
+            value={"Buy Now"}
+            extraClass="mx-auto"
+          />
+        </div>
 
       </form>
     </section>
