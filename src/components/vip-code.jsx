@@ -86,7 +86,7 @@ export default function VipCode() {
               md:mt-10 md:ml-5 
             `}>
               <SubmitBtn
-                value='Check'
+                value='Apply'
                 extraClass={`w-32 py-2`}
               />
             </div>
