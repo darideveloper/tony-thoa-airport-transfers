@@ -11,7 +11,7 @@ import VipCodeContext from '../context/vip-code'
 
 export default function VipCode() {
 
-  const { vipCode, setVipCode } = useContext(VipCodeContext)
+  const { vipCode, setVipCode, isVip, setIsVip } = useContext(VipCodeContext)
   const [isLoading, setIsLoading] = useState(false)
 
   function handleSubmit(e) {
@@ -31,12 +31,17 @@ export default function VipCode() {
           'Now you have a free service',
           'success'
         )
+
+        setIsVip (true)
+
       } else {
         Swal.fire(
           'Vip Code Invalid!',
           'Check your code and try again',
           'error'
         )
+
+        setIsVip (false)
       }
 
       // Hide spinner

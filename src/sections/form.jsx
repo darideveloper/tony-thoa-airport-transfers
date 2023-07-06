@@ -24,7 +24,7 @@ import { useContext } from 'react'
 export default function Form() {
 
   const { loading, setLoading } = useContext(LoadContext)
-  const { vipCode } = useContext(VipCodeContext)
+  const { vipCode, isVip } = useContext(VipCodeContext)
 
   const [transports, setTransports] = useState([])
   const [activeTransportType, setActiveTransportType] = useState('Arriving')
@@ -34,7 +34,7 @@ export default function Form() {
   const [lastName, setLastName] = useState('')
   const [passengers, setPassengers] = useState('1')
   const [hotel, setHotel] = useState()
-  const [otherHotel, setOtherHotel] = useState()
+  const [otherHotel, setOtherHotel] = useState('')
   const [hotels, setHotels] = useState([])
   const [arrivingDate, setArrivingDate] = useState('')
   const [arrivingTime, setArrivingTime] = useState('')
@@ -61,8 +61,6 @@ export default function Form() {
   }
 
   function handleSubmit(e) {
-    
-    console.log ({vipCode})
 
     // Don't submit form
     e.preventDefault()
@@ -76,40 +74,30 @@ export default function Form() {
     submitStripe(serviceName, total, name, lastName, vipCode)
   }
 
-  useEffect(() => {
-
-    let transport, municipality
-
-    // Detect when resize screen and update media query status
-    window.addEventListener('resize', () => {
-      handleResize()
+  function updateTransports() {
+    getTransports().then(apiTransports => {
+      setTransports(apiTransports)
+      setActiveTransportType(apiTransports[0].id)
+      setActiveTransportPrice(apiTransports[0].price)
+      setTotal(apiTransports[0].price)
     })
+  }
 
-    // Handle when loads
-    handleResize(handleResize())
-
-    // Load api data when mounts
+  function updateHotels() {
     getHotels().then(apiHotels => {
       setHotels(apiHotels)
       setHotel(apiHotels[0].value)
     })
+  }
 
-    getTransports().then(apiTransports => {
-      setTransports(apiTransports)
-      transport = apiTransports[0].price
-      setActiveTransportPrice(transport)
-      setTotal(apiTransports[0].price)
-    })
-  }, [])
-
-  // Renmder again when prices change
-  useEffect(() => {
+  function updateTotal() {
+    // Update total uwing transport and hotel values
 
     // Skip when data its loading
     if (hotels.length == 0) {
       return undefined
     }
-    
+
     // Get multipliear for round trip
     let multiplier = 1
     if (activeTransportType == "Arriving,Departing") {
@@ -121,8 +109,52 @@ export default function Form() {
     const hotel_obj = hotels.find(h => h.value == hotel)
     total += hotel_obj.price * multiplier
     setTotal(total)
+  }
 
-  }, [hotel, activeTransportPrice])
+  useEffect(() => {
+    // Initial data load
+
+    // Detect when resize screen and update media query status
+    window.addEventListener('resize', () => {
+      handleResize()
+    })
+
+    // Handle when loads
+    handleResize(handleResize())
+  }, [])
+
+  useEffect(() => {
+    // Renmder again when prices change
+    updateTotal()
+
+  }, [hotel, activeTransportPrice, hotels, transports])
+
+  useEffect(() => {
+    // Renmder again when vip code change
+
+    if (isVip) {
+      // Set transport prices to 0 if vip code is valid
+      setActiveTransportPrice(0)
+      transports.forEach(transport => {
+        transport.price = 0
+      })
+      setTransports(transports)
+
+      // Set hotel prices to 0 if vip code is valid
+      hotels.forEach(hotel => {
+        hotel.price = 0
+      })
+      setHotels(hotels)
+
+    } else {
+      console.log("update hotels and transports")
+      updateTransports()
+      updateHotels()
+    }
+
+    updateTotal()
+
+  }, [isVip])
 
 
   function getArraivingDepartingForm() {
@@ -259,7 +291,7 @@ export default function Form() {
                 placeholder='Enter the hotel full name'
                 type='text'
                 name='hotel-name'
-                handleUpdate={(e) => {setOtherHotel(e.target.value)}}
+                handleUpdate={(e) => { setOtherHotel(e.target.value) }}
                 value={otherHotel}
               />
             }
@@ -277,7 +309,7 @@ export default function Form() {
           </span>
         </p>
 
-        <div 
+        <div
           className={`
             wrapper-submit
             flex items-center justify-center mt-10
