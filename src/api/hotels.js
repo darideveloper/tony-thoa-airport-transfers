@@ -9,12 +9,18 @@ export async function getHotels () {
 
   // Format data
   const data = []
-  for (const hotel of hotels) {
-    const fields = hotel.fields
+  for (const hotel of hotels.data) {
     data.push ({
-      value: fields.name, label: fields.name, price: fields.extra_price
+      value: hotel.name, label: hotel.name, price: hotel.extra_price
     })
   }
+
+  // Add "other" option
+  data.push({
+    value: 'other', 
+    label: 'Other hotel in Playa del Carmen',
+    price: 0
+  })
 
   return data
 }
