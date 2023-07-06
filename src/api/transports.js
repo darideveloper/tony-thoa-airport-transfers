@@ -7,12 +7,16 @@ export async function getTransports () {
   const response = await fetch(endpoint)
   const transports = await response.json()
 
+  console.log ({transports})
+
   // Format data
   const data = []
-  for (const transport of transports) {
-    const fields = transport.fields
+  for (const transport of transports.data) {
     data.push ({
-      id: fields.key, text: fields.name, price: fields.price, initialActive: fields.por_defecto
+      id: transport.key, 
+      text: transport.name, 
+      price: transport.price, 
+      initialActive: transport.por_defecto
     })
   }
 

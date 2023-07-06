@@ -11,7 +11,9 @@ export async function getHotels () {
   const data = []
   for (const hotel of hotels.data) {
     data.push ({
-      value: hotel.name, label: hotel.name, price: hotel.extra_price
+      value: hotel.name, 
+      label: hotel.name, 
+      price: hotel.extra_price
     })
   }
 
@@ -19,7 +21,7 @@ export async function getHotels () {
   data.push({
     value: 'other', 
     label: 'Other hotel in Playa del Carmen',
-    price: 0
+    price: 10
   })
 
   return data
