@@ -62,6 +62,9 @@ export default function Form() {
 
   function handleSubmit(e) {
 
+    // Show loading
+    setLoading(true)
+
     // Don't submit form
     e.preventDefault()
 
@@ -69,9 +72,12 @@ export default function Form() {
     const currentService = transports.find(transport => transport.id == activeTransportType)
     const serviceName = currentService.text
 
-
     // Submit to stripe
-    submitStripe(serviceName, total, name, lastName, vipCode)
+    submitStripe(serviceName, total, name, lastName, vipCode).then (() => {
+      // Disable loading
+      setLoading(false)
+    })
+
   }
 
   function updateTransports() {
@@ -147,7 +153,6 @@ export default function Form() {
       setHotels(hotels)
 
     } else {
-      console.log("update hotels and transports")
       updateTransports()
       updateHotels()
     }

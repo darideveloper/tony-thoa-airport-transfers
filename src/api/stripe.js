@@ -1,11 +1,8 @@
 import Swal from 'sweetalert2'
+import { apiBaseUrl } from './api'
 
-const stripeApi = "https://stripe-api-flask.herokuapp.com/"
-const stripeUser = "rivieramayaairporttransfers"
-
-
-import LoadContext from '../context/load'
-import { useContext } from 'react'
+// const stripeApi = "https://stripe-api-flask.herokuapp.com/"
+const backend_api = `${apiBaseUrl}/buy/`
 
 export async function submitStripe(serviceName, servicePrice, name, lastName, vipCode) {
   
@@ -19,11 +16,6 @@ export async function submitStripe(serviceName, servicePrice, name, lastName, vi
     })
   }
   
-  const { loading, setLoading } = useContext(LoadContext)
-
-  // Toggle loading status
-  setLoading(!loading)
-
   // Get service data
   const serviceAmount = 1
   const serviceImage = "https://github.com/darideveloper/rivieramayaairporttransfers/blob/master/public/imgs/page-logo.png?raw=true"
@@ -47,32 +39,40 @@ export async function submitStripe(serviceName, servicePrice, name, lastName, vi
   }
 
   try {
-    const response = await fetch(stripeApi, {
+    const response = await fetch(backend_api, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        "user": stripeUser,
-        "url": window.location.href,
-        "products": serviceData
+        "name": name,
+        "last-name": lastName,
+        "price": servicePrice,
+        "vip-code": vipCode,
+        "stripe-data": serviceData,
+        "from-host": window.location.href
       }),
       mode: "cors",
     })
     const response_json = await response.json()
 
-    // // Validate api response for redirect
-    if (Object.keys(response_json).includes("stripe_url")) {
-      window.location.href = response_json.stripe_url
-    } else {
+    console.log ({response_json})
+
+    // Show error if api call fails
+    if (response_json.status == "error") {
       alertError()
+      return null
+    } 
+
+    // Redirect to page if ink is generated
+    console.log (response_json)
+    if (response_json.redirect && response_json.redirect != null) {
+      window.location.href = response_json.redirect
     }
+
   } catch (error) {
     alertError()
-
-    // Toggle loading status
-    setLoading(!loading)
   }
 
 }
