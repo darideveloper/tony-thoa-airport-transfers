@@ -15,6 +15,7 @@ import SubmitBtn from "../components/submit-btn"
 import { getHotels } from "../api/hotels"
 import { submitStripe } from "../api/stripe"
 import { getTransports } from "../api/transports"
+import { getFreeDates } from "../api/free-dates"
 
 // Context
 import LoadContext from '../context/load'
@@ -45,6 +46,10 @@ export default function Form() {
   const [departingAirline, setDepartingAirline] = useState('')
   const [departingFlight, setDepartingFlight] = useState('')
   const [total, setTotal] = useState(0)
+  const [arrivalFreeDate, setArrivalFreeDate] = useState("2021-12-31")
+  const [departureFreeDate, setDepartureFreeDate] = useState("2021-12-31")
+  const [oldArrivingPrice, setOldArrivingPrice] = useState(0)
+  const [oldDepartingPrice, setOldDepartingPrice] = useState(0)
 
   function handleUpdateType(id) {
     // Update active transport type
@@ -73,7 +78,7 @@ export default function Form() {
     const serviceName = currentService.text
 
     // Submit to stripe
-    submitStripe(serviceName, total, name, lastName, vipCode).then (() => {
+    submitStripe(serviceName, total, name, lastName, vipCode).then(() => {
       // Disable loading
       setLoading(false)
     })
@@ -120,6 +125,11 @@ export default function Form() {
   useEffect(() => {
     // Initial data load
 
+    getFreeDates().then(freeDates => {
+      setArrivalFreeDate(freeDates.arrival)
+      setDepartureFreeDate(freeDates.departure)
+    })
+
     // Detect when resize screen and update media query status
     window.addEventListener('resize', () => {
       handleResize()
@@ -134,6 +144,7 @@ export default function Form() {
     updateTotal()
 
   }, [hotel, activeTransportPrice, hotels, transports])
+
 
   useEffect(() => {
     // Renmder again when vip code change
@@ -161,6 +172,13 @@ export default function Form() {
 
   }, [isVip])
 
+  // useEffect(() => {
+  //   // Reset dates when transport changes
+  //   setArrivingDate("")
+  //   setDepartingDate("")
+
+  // }, [activeTransportType])
+
 
   function getArraivingDepartingForm() {
     // Generate arraiving and departing forms
@@ -184,7 +202,74 @@ export default function Form() {
             label={`${title} date`}
             type='date'
             name={`${title.toLowerCase()}-date`}
-            handleUpdate={(e) => title == "Arriving" ? setArrivingDate(e.target.value) : setDepartingDate(e.target.value)}
+            handleUpdate={(e) => {
+
+              // Update date
+              if (title == "Arriving") {
+                setArrivingDate(e.target.value)
+              } else {
+                setDepartingDate(e.target.value)
+              }
+
+              console.log({
+                arrivalFreeDate,
+                departureFreeDate,
+                "value": e.target.value,
+                oldArrivingPrice,
+                oldDepartingPrice
+              })
+
+
+              let dateMatch = e.target.value == arrivalFreeDate || e.target.value == departureFreeDate
+
+              // Firnd transports
+              const transport = transports.find(transport => transport.id == activeTransportType)
+              const transportRound = transports.find(transport => transport.id == "Arriving,Departing")
+
+              // Set prices to 0 if date is free
+              if (dateMatch) {
+
+                const oldActiveTransportPrice = activeTransportPrice
+
+                // Get current transport
+                transport.price = 0
+
+                // Backup old price
+                if (title == "Arriving") {
+                  setOldArrivingPrice(oldActiveTransportPrice)
+                } else {
+                  setOldDepartingPrice(oldActiveTransportPrice)
+                }
+
+                // Reduce price of round trip
+                transportRound.price -= oldActiveTransportPrice
+
+                setActiveTransportPrice(0)
+
+              } else if ((oldArrivingPrice != 0 && title == "Arriving") || 
+                (oldDepartingPrice != 0 && title == "Departing")) {
+
+                // Restore old price
+                if (title == "Arriving") {
+                  transport.price = oldArrivingPrice
+                  setActiveTransportPrice(oldArrivingPrice)
+                  setOldArrivingPrice(0)
+                } else {
+                  transport.price = oldDepartingPrice
+                  setActiveTransportPrice(oldDepartingPrice)
+                  setOldDepartingPrice(0)
+                }
+
+                // Increase price of round trip
+                transportRound.price += transport.price
+              }
+
+
+              // Update data
+              setTransports(transports)
+              updateTotal()
+
+            }}
             value={title == "Arriving" ? arrivingDate : departingDate}
           />
           <Input
