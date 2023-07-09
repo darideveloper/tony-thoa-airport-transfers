@@ -211,22 +211,16 @@ export default function Form() {
                 setDepartingDate(e.target.value)
               }
 
-              console.log({
-                arrivalFreeDate,
-                departureFreeDate,
-                "value": e.target.value,
-                oldArrivingPrice,
-                oldDepartingPrice
-              })
-
               // Firnd transports
-              const transport = transports.find(transport => transport.id == activeTransportType)
+              const transport = transports.find(transport => transport.id == title)
               const transportRound = transports.find(transport => transport.id == "Arriving,Departing")
 
-              const oldActiveTransportPrice = activeTransportPrice
+              const oldActiveTransportPrice = transport.price
 
               if ((title == "Arriving" && e.target.value == arrivalFreeDate) || 
                 (title == "Departing" && e.target.value == departureFreeDate)) {
+
+                console.log ({title, transport})
 
                 // Remove departing price
                 if (title == "Arriving") {
@@ -236,7 +230,13 @@ export default function Form() {
                 }
                 transport.price = 0
                 transportRound.price -= oldActiveTransportPrice
-                setActiveTransportPrice(0)
+
+                // Update total
+                if (activeTransportType == "Arriving,Departing") {
+                  setActiveTransportPrice(transportRound.price)
+                } else {
+                  setActiveTransportPrice(0)
+                }
                 
               } else if ((oldArrivingPrice != 0 && title == "Arriving") ||
                 (oldDepartingPrice != 0 && title == "Departing")) {
