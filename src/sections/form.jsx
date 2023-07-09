@@ -219,34 +219,26 @@ export default function Form() {
                 oldDepartingPrice
               })
 
-
-              let dateMatch = e.target.value == arrivalFreeDate || e.target.value == departureFreeDate
-
               // Firnd transports
               const transport = transports.find(transport => transport.id == activeTransportType)
               const transportRound = transports.find(transport => transport.id == "Arriving,Departing")
 
-              // Set prices to 0 if date is free
-              if (dateMatch) {
+              const oldActiveTransportPrice = activeTransportPrice
 
-                const oldActiveTransportPrice = activeTransportPrice
+              if ((title == "Arriving" && e.target.value == arrivalFreeDate) || 
+                (title == "Departing" && e.target.value == departureFreeDate)) {
 
-                // Get current transport
-                transport.price = 0
-
-                // Backup old price
+                // Remove departing price
                 if (title == "Arriving") {
                   setOldArrivingPrice(oldActiveTransportPrice)
                 } else {
                   setOldDepartingPrice(oldActiveTransportPrice)
                 }
-
-                // Reduce price of round trip
+                transport.price = 0
                 transportRound.price -= oldActiveTransportPrice
-
                 setActiveTransportPrice(0)
-
-              } else if ((oldArrivingPrice != 0 && title == "Arriving") || 
+                
+              } else if ((oldArrivingPrice != 0 && title == "Arriving") ||
                 (oldDepartingPrice != 0 && title == "Departing")) {
 
                 // Restore old price
