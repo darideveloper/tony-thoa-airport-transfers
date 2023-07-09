@@ -7,7 +7,20 @@ import Services from './sections/services'
 import Footer from './sections/footer'
 import Load from './sections/load'
 
+import Swal from 'sweetalert2'
+
 function App() {
+
+  // Show alert if thanks query param is present
+  const urlParams = new URLSearchParams(window.location.search)
+  const thanks = urlParams.get('thanks')
+  if (thanks) {
+    Swal.fire({
+      icon: 'success',
+      title: 'Thank you!',
+      text: 'Your sale has been processed successfully',
+    })
+  }
 
   return (
     <div>
