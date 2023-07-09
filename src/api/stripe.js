@@ -4,7 +4,7 @@ import { apiBaseUrl } from './api'
 // const stripeApi = "https://stripe-api-flask.herokuapp.com/"
 const backend_api = `${apiBaseUrl}/buy/`
 
-export async function submitStripe(serviceName, servicePrice, name, lastName, vipCode) {
+export async function submitStripe(serviceName, servicePrice, firstName, lastName, vipCode) {
   
   function alertError() {
     // Alert error for api call
@@ -46,7 +46,7 @@ export async function submitStripe(serviceName, servicePrice, name, lastName, vi
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        "name": name,
+        "name": firstName,
         "last-name": lastName,
         "price": servicePrice,
         "vip-code": vipCode,
