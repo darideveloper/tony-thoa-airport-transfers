@@ -15,8 +15,8 @@ export default function Hero () {
             <span
               className={`
                 text-sm
-                md:text-md
-                lg:text-lg
+                md:text-xl
+                lg:text-2xl
               `}
             >
               Complimentary transportation will be provided for all guests traveling between Jan. 31st and Feb. 5th
