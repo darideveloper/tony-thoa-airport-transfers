@@ -314,8 +314,6 @@ export default function Form() {
         text='Transportation Options'
       />
 
-      <VipCode />
-
       <form action="." method="post" className="mx-auto" onSubmit={e => { handleSubmit(e) }}>
         <TransportTypes
           handleUpdateType={handleUpdateType}
@@ -383,6 +381,8 @@ export default function Form() {
           {getArraivingDepartingForm()}
 
         </div>
+
+        <VipCode />
 
         <p className="total text-center text-2xl w-fulll block mt-10">
           Total

@@ -19,8 +19,6 @@ export default function VipCode() {
     // Show spinner while loading
     setIsLoading(true)
 
-    e.preventDefault()
-
     // Validate vip code with api
     validateVipCode(vipCode).then(isValid => {
 
@@ -50,14 +48,14 @@ export default function VipCode() {
   }
 
   return (
-    <form
+    <div
       className={`
+        vip-code
         container w-5/6
         flex items-center justify-start
         h-28
         mb-14
       `}
-      onSubmit={(e) => handleSubmit(e)}
     >
       {
         isLoading
@@ -78,7 +76,7 @@ export default function VipCode() {
             `}
           >
             <Input
-              label='You have a VIP Code?'
+              label='Do you have a code?'
               type="text"
               placeholder='12345'
               name='vipCode'
@@ -94,11 +92,13 @@ export default function VipCode() {
               <SubmitBtn
                 value='Apply'
                 extraClass={`w-32 py-2`}
+                type='button'
+                onClick={(e) => handleSubmit(e)}
               />
             </div>
           </fieldset>
 
       }
-    </form>
+    </div>
   )
 }

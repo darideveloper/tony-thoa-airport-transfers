@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export default function SubmitBtn ({value, extraClass}) {
+export default function SubmitBtn ({value, extraClass, type="submit", onClick=() => {}}) {
 
   const className = `
     no-collect 
@@ -15,13 +15,17 @@ export default function SubmitBtn ({value, extraClass}) {
 
   return (
     <input 
-      type="submit" 
+      type={type} 
       value={value}
-      className={className}/>
+      className={className}
+      onClick={onClick}
+    />
   )
 }
 
 SubmitBtn.propTypes = {
   value: PropTypes.string.isRequired,
   extraClass: PropTypes.string,
+  type: PropTypes.string,
+  onClick: PropTypes.func
 }
