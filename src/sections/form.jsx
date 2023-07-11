@@ -46,8 +46,8 @@ export default function Form() {
   const [departingAirline, setDepartingAirline] = useState('')
   const [departingFlight, setDepartingFlight] = useState('')
   const [total, setTotal] = useState(0)
-  const [arrivalFreeDate, setArrivalFreeDate] = useState("2021-12-31")
-  const [departureFreeDate, setDepartureFreeDate] = useState("2021-12-31")
+  const [arrivalFreeDates, setArrivalFreeDates] = useState([])
+  const [departureFreeDates, setDepartureFreeDates] = useState([])
   const [oldArrivingPrice, setOldArrivingPrice] = useState(0)
   const [oldDepartingPrice, setOldDepartingPrice] = useState(0)
 
@@ -126,8 +126,8 @@ export default function Form() {
     // Initial data load
 
     getFreeDates().then(freeDates => {
-      setArrivalFreeDate(freeDates.arrival)
-      setDepartureFreeDate(freeDates.departure)
+      setArrivalFreeDates(freeDates.arrival)
+      setDepartureFreeDates(freeDates.departure)
     })
 
     // Detect when resize screen and update media query status
@@ -217,10 +217,16 @@ export default function Form() {
 
               const oldActiveTransportPrice = transport.price
 
-              if ((title == "Arriving" && e.target.value == arrivalFreeDate) || 
-                (title == "Departing" && e.target.value == departureFreeDate)) {
+              console.log ({
+                "value": e.target.value, 
+                arrivalFreeDates, 
+                departureFreeDates,
+                "arrival": arrivalFreeDates.includes(e.target.value),
+                "departure": departureFreeDates.includes(e.target.value),
+              })
 
-                console.log ({title, transport})
+              if ((title == "Arriving" && arrivalFreeDates.includes(e.target.value)) || 
+                (title == "Departing" && departureFreeDates.includes(e.target.value))) {
 
                 // Remove departing price
                 if (title == "Arriving") {

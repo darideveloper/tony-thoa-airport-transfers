@@ -57,8 +57,6 @@ export async function submitStripe(serviceName, servicePrice, firstName, lastNam
     })
     const response_json = await response.json()
 
-    console.log ({response_json})
-
     // Show error if api call fails
     if (response_json.status == "error") {
       alertError()
@@ -66,7 +64,6 @@ export async function submitStripe(serviceName, servicePrice, firstName, lastNam
     } 
 
     // Redirect to page if ink is generated
-    console.log (response_json)
     if (response_json.redirect && response_json.redirect != null) {
       window.location.href = response_json.redirect
     }
