@@ -21,7 +21,7 @@ export async function getHotels () {
   data.push({
     value: 'other', 
     label: 'Other hotel in Playa del Carmen',
-    price: 10
+    price: 0
   })
 
   return data
