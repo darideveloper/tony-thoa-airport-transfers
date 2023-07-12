@@ -54,7 +54,8 @@ export default function VipCode() {
         container w-5/6
         flex items-center justify-start
         h-28
-        mb-14
+        mb-14 mt-10
+        md:mt-0
       `}
     >
       {
