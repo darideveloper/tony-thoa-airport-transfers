@@ -83,6 +83,7 @@ export default function VipCode() {
               name='vipCode'
               value={vipCode}
               handleUpdate={(e) => setVipCode(e.target.value)}
+              isRequired={false}
             />
 
             <div className={`
