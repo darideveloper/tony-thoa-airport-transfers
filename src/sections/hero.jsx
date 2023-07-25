@@ -4,6 +4,7 @@ export default function Hero () {
   return (
     <section className="hero">
       <div className="wrapper-logo mx-auto my-0">
+        <img src="./imgs/page-logo.png" alt="event logo" className="w-56 mx-auto"/>
       </div>
 
       <div className="hero-image relative">
