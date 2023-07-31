@@ -17,6 +17,7 @@
             </a></div><div align='center'><br><br><img src='https://cancunconciergedmc.com/sarina-abhi-airport-transfers/imgs/page-logo.png' alt='Sarina Abhi Airport Transfers' height='80px'/>
 
 
+
 # Sarina Abhi Airport Transfers
 
 Visit at: **[cancunconciergedmc.com/sarina-abhi-airport-transfers](https://cancunconciergedmc.com/sarina-abhi-airport-transfers/)**
@@ -43,33 +44,37 @@ Project type: **client**
 
 <div align='center'><a href='https://github.com/darideveloper/rivieramayaairporttransfers' target='_blank'> <img src='https://rivieramayaairporttransfers.com/imgs/page-logo-trans.png' alt='Riviera Maya Airport Transfers' title='Riviera Maya Airport Transfers' height='50px'/> </a><a href='https://github.com/darideveloper/cancun-concierge' target='_blank'> <img src='https://github.com/darideveloper/cancun-concierge/raw/master/imgs/logo.png' alt='Cancun Concierge' title='Cancun Concierge' height='50px'/> </a></div>
 
+# Media
+
+![landing](https://github.com/darideveloper/sarina-abhi-airport-transfers/blob/master/screenshot.png?raw=true)
+
 # Details
 
-The project have a service dynamic form, who redirects to stripe checkout.
-
-The landing page include the following sections:
-
-* Header
-* Hero
-* Buy form
-* Our services
-* Footer
-
+The project have a service dynamic form, who redirects to stripe checkout.
+
+The landing page include the following sections:
+
+* Header
+* Hero
+* Buy form
+* Our services
+* Footer
+
 The buy form user dynamic data, like prices or available hotels, updated by the user in the same dashboard of the related project project **EZBookingTours Store**.
 
 # Roadmap
 
-* [x] Layout and responsive
-* [x] Select transport type
-* [x] Custom tailwind colors
-* [x] Dynamic arriving and departing forms
-* [x] React hooks
-* [x] Redirect to stripe checkout
-* [x] Custom scroll bar
-* [x] Hover effects
-* [x] Host in cancunconciergedmc.com
-* [x] Loading spinner
-* [x] Connect to django dashboard
-* [x] Vip code managed from dashboard
+* [x] Layout and responsive
+* [x] Select transport type
+* [x] Custom tailwind colors
+* [x] Dynamic arriving and departing forms
+* [x] React hooks
+* [x] Redirect to stripe checkout
+* [x] Custom scroll bar
+* [x] Hover effects
+* [x] Host in cancunconciergedmc.com
+* [x] Loading spinner
+* [x] Connect to django dashboard
+* [x] Vip code managed from dashboard
 * [x] Free dates managed from dashboard
 
