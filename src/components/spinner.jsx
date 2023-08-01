@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 export default function Spinner ({size="l", alt=false}) {
 
-  const className = size == "l" ? "w-40" : "w-10"
+  const className = size == "l" ? "w-30" : "w-10"
 
   return (
     <img 

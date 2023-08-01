@@ -8,7 +8,6 @@ export default {
         "black": "#1a1a1a",
         "white": "#ffffff",
         "gold": "#C8B568",
-        "green": "#bcd4d4",
       }
     },
   },
