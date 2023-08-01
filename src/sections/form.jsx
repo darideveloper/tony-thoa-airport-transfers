@@ -126,8 +126,17 @@ export default function Form() {
     // Initial data load
 
     getFreeDates().then(freeDates => {
+
+      // Save free dates
       setArrivalFreeDates(freeDates.arrival)
       setDepartureFreeDates(freeDates.departure)
+
+      // Update default dates
+      setArrivingDate(freeDates.arrival[0])
+      setDepartingDate(freeDates.departure[0])
+
+      // Update total
+      updateTotal()
     })
 
     // Detect when resize screen and update media query status
@@ -171,14 +180,6 @@ export default function Form() {
     updateTotal()
 
   }, [isVip])
-
-  // useEffect(() => {
-  //   // Reset dates when transport changes
-  //   setArrivingDate("")
-  //   setDepartingDate("")
-
-  // }, [activeTransportType])
-
 
   function getArraivingDepartingForm() {
     // Generate arraiving and departing forms
