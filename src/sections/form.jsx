@@ -397,7 +397,7 @@ export default function Form() {
 
         <VipCode />
 
-        <p className="total text-center text-2xl w-fulll block mt-10">
+        <p className={`total text-center text-2xl w-fulll block mt-10 ${total == 0 ? "hidden" : ""}`}>
           Total
           <span className="px-2 font-bold">
             {total}.00 USD
@@ -410,7 +410,7 @@ export default function Form() {
             flex items-center justify-center mt-10
           `}>
           <SubmitBtn
-            value={"Buy Now"}
+            value={total == 0 ? "Save my place" : "Buy Now"}
             extraClass={`w-48 py-3`}
           />
         </div>
