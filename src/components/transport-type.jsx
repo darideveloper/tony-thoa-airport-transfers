@@ -38,8 +38,10 @@ export default function TransportType ({id, text, price, handleUpdateType, trans
 
           <div className="text ms-5 w-full block">
             <h3 className='uppercase text-xl'>{text}</h3>
-            <span className='block'>price</span>
-            <span className="price text-gold font-bold text-2xl">{price}.00 USD</span>
+            <div className={`price-wrapper ${price == 0 ? "hidden" : "" }`}>
+              <span className='block'>price</span>
+              <span className="price text-gold font-bold text-2xl">{price}.00 USD</span>
+            </div>
           </div>
 
         </label>
