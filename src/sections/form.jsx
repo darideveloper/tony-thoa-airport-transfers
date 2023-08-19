@@ -335,7 +335,7 @@ export default function Form() {
         />
 
         <div className="fields w-5/6 mx-auto grid gap-10" style={{ gridTemplateColumns: mediaQuery ? "repeat(1, 1fr)" : activeTransportType == "Arriving,Departing" ? "repeat(3, 1fr)" : "repeat(2, 1fr)" }}>
-          <Fieldset title='General'>
+          <Fieldset title='Guest Information'>
             <legend className="title text-xl uppercase mb-3"></legend>
             <Input
               label='Name'
