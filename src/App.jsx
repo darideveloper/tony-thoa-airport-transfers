@@ -18,7 +18,7 @@ function App() {
     Swal.fire({
       icon: 'success',
       title: 'Thank you!',
-      text: 'Your sale has been processed successfully',
+      text: 'Your transportation has been reserved succesfully',
     })
   }
 
