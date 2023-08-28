@@ -51,6 +51,8 @@ export default function Form() {
   const [oldArrivingPrice, setOldArrivingPrice] = useState(0)
   const [oldDepartingPrice, setOldDepartingPrice] = useState(0)
   const [availableHotels, setAvailableHotels] = useState([])
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
 
   function handleUpdateType(id) {
     // Update active transport type
@@ -79,7 +81,7 @@ export default function Form() {
     const serviceName = currentService.text
 
     // Submit to stripe
-    submitStripe(serviceName, total, name, lastName, vipCode).then(() => {
+    submitStripe(serviceName, total, name, lastName, vipCode, phone, email).then(() => {
       // Disable loading
       setLoading(false)
     })
@@ -377,6 +379,25 @@ export default function Form() {
             />
             <FormText
               text="Maximum eight passengers per van"
+            />
+            <Input
+              label='Email'
+              placeholder='sample@gmail.com'
+              type='email'
+              name='email'
+              handleUpdate={(e) => setEmail(e.target.value)}
+              value={email}
+            />
+            <FormText
+              text="Your email can requested again in the checkout page, be sure to enter it correctly"
+            />
+            <Input
+              label='Phone number'
+              placeholder='555-555-5555'
+              type='tel'
+              name='phone'
+              handleUpdate={(e) => setPhone(e.target.value)}
+              value={phone}
             />
             <Select
               label='Hotel'
