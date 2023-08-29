@@ -50,7 +50,6 @@ export default function Form() {
   const [departureFreeDates, setDepartureFreeDates] = useState([])
   const [oldArrivingPrice, setOldArrivingPrice] = useState(0)
   const [oldDepartingPrice, setOldDepartingPrice] = useState(0)
-  const [availableHotels, setAvailableHotels] = useState([])
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
 
@@ -187,20 +186,6 @@ export default function Form() {
     // Handle when loads
     handleResize(handleResize())
   }, [])
-
-  useEffect(() => {
-    // Update available hotels based on vip code and total
-
-    let availableHotels = []
-    if (isVip || total != 0) {
-      availableHotels = hotels
-    } else {
-      availableHotels = hotels.filter(hotel => hotel.value != "other")
-    }
-    console.log ({availableHotels,isVip,total})
-    setAvailableHotels(availableHotels)
-
-  }, [isVip, total])
 
   function handleUpdateDate(e, title, forceUpdate=false, apiTransports=[]) {
     // Update date
@@ -407,7 +392,7 @@ export default function Form() {
                 const value = e.target.value
                 setHotel(value)
               }}
-              options={availableHotels}
+              options={hotels}
               activeOption={hotel}
             />
 

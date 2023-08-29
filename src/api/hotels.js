@@ -20,7 +20,7 @@ export async function getHotels () {
   // Add "other" option
   data.push({
     value: 'other', 
-    label: 'Other hotel in Playa del Carmen',
+    label: 'Another Hotel in Playa del Carmen',
     price: 0
   })
 
