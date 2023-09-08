@@ -18,7 +18,7 @@ function App() {
     Swal.fire({
       icon: 'success',
       title: 'Thank you!',
-      text: 'Your transportation has been reserved succesfully',
+      html: '<p>Your transportation has been reserved succesfully <br><br> You will receive a detailed email confirmation including arrival process at the airport and hotel departure time (for departure back to the airport) soon.</p>',
     })
   }
 
