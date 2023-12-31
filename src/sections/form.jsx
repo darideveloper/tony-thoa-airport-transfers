@@ -28,7 +28,7 @@ export default function Form() {
   const { vipCode, isVip } = useContext(VipCodeContext)
 
   const [transports, setTransports] = useState([])
-  const [activeTransportType, setActiveTransportType] = useState('Arriving')
+  const [activeTransportType, setActiveTransportType] = useState('Arriving,Departing')
   const [activeTransportPrice, setActiveTransportPrice] = useState(0)
   const [mediaQuery, setMediaQuery] = useState(false)
   const [name, setName] = useState('')
@@ -90,9 +90,9 @@ export default function Form() {
   function updateTransports() {
     getTransports().then(apiTransports => {
       setTransports(apiTransports)
-      setActiveTransportType(apiTransports[0].id)
-      setActiveTransportPrice(apiTransports[0].price)
-      setTotal(apiTransports[0].price)
+      setActiveTransportType(apiTransports[2].id)
+      setActiveTransportPrice(apiTransports[2].price)
+      setTotal(apiTransports[2].price)
     })
   }
 
