@@ -17,6 +17,5 @@ export async function getTransports () {
       initialActive: transport.by_default
     })
   }
-
   return data
 }

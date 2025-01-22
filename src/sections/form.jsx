@@ -90,9 +90,14 @@ export default function Form() {
   function updateTransports() {
     getTransports().then(apiTransports => {
       setTransports(apiTransports)
-      setActiveTransportType(apiTransports[2].id)
-      setActiveTransportPrice(apiTransports[2].price)
-      setTotal(apiTransports[2].price)
+
+      // Get active transport type
+      const activeTransport = apiTransports.find(transport => transport.initialActive)
+
+      // Set active transport type
+      setActiveTransportType(activeTransport.id)
+      setActiveTransportPrice(activeTransport.price)
+      setTotal(activeTransport.price)
     })
   }
 
