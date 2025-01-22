@@ -18,7 +18,7 @@ export async function submitStripe(serviceName, servicePrice, firstName, lastNam
   
   // Get service data
   const serviceAmount = 1
-  const serviceImage = "https://github.com/darideveloper/sarina-abhi-airport-transfers/blob/master/public/imgs/logo.png?raw=true"
+  const serviceImage = "https://github.com/darideveloper/tony-thoa-airport-transfers/blob/master/public/imgs/logo.png?raw=true"
   const inputsData = []
   const inputs = document.querySelectorAll("input:not(.no-collect), select:not(.no-collect)")
   inputs.forEach(input => {
