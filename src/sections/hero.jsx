@@ -11,7 +11,7 @@ export default function Hero () {
 
         <div className="text-wrapper mt-16 mb-10 w-full z-10 text-center flex flex-col items-center justify-center sm:absolute sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:m-0">
           <h1 className='py-2 px-4 text-lg sm:text-2xl md:text-4xl lg:text-5xl leading-snug bg-white inline-block lg:py-5 lg:px-20 '>
-            Complimentary transportation will be provided for all guests traveling between Jan. 31st and Feb. 4th
+            Complimentary transportation will be provided for all guests traveling on November 9th and November 12th
             <br />
             <span
               className={`
