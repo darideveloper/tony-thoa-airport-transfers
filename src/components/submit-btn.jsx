@@ -9,7 +9,7 @@ export default function SubmitBtn ({value, extraClass, type="submit", onClick=()
     text-white text-2xl font-bold 
     cursor-pointer 
     rounded-xl 
-    duration-300 hover:rounded-3xl hover:bg-white hover:text-green
+    duration-300 hover:rounded-3xl hover:bg-white hover:text-gold
     ${extraClass}
   `
 
