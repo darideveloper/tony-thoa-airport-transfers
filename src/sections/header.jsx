@@ -4,7 +4,7 @@ import Menu from '../components/menu'
 export default function Header () {
 
   return (
-    <header className="bg-blue pt-6 pb-0 sm:pb-5 md:py-5" id='header'>
+    <header className="bg-green pt-6 pb-0 sm:pb-5 md:py-5" id='header'>
       <div className="container flex flex-col items-center justify-center lg:flex-row lg:justify-between">
         
         <Logo 

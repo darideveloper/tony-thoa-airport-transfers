@@ -3,14 +3,14 @@ import ContactCard from "../components/contact-card"
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-blue mt-48" id="footer">
+    <footer className="w-full bg-green mt-48" id="footer">
 
       <div className="go-top-wrapper w-full relative">
         <a href="#header" className="go-top flex items-center justify-center flex-col bg-white w-16 h-16 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-black drop-shadow-lg duration-500 hover:scale-110" >
-          <svg viewBox="0 0 24 24" className="fill-blue w-5 h-5">
+          <svg viewBox="0 0 24 24" className="fill-green w-5 h-5">
             <path d="M23.245 20l-11.245-14.374-11.219 14.374-.781-.619 12-15.381 12 15.391-.755.609z"></path>
           </svg>
-          <span className="uppercase text-blue">top</span>
+          <span className="uppercase text-green">top</span>
         </a>
       </div>
 

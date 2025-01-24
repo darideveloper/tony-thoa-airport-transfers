@@ -35,9 +35,9 @@ export default function TransportType({ id, text, price, handleUpdateType, trans
       <div className="checkbox opacity-80 ms-3">
         <label htmlFor={id} className='flex items-center justify-start mb-10 md:justify-center cursor-pointer'>
 
-          <div className="box border-2 w-14 h-8 border-blue flex items-center justify-center">
+          <div className="box border-2 w-14 h-8 border-gold flex items-center justify-center">
             {/* Activate this div when selected */}
-            <div className="inside bg-blue w-8 h-4 transition-opacity duration-300" style={{ opacity: transportType == id ? "1" : (hover ? "0.6" : "0") }}></div>
+            <div className="inside bg-gold w-8 h-4 transition-opacity duration-300" style={{ opacity: transportType == id ? "1" : (hover ? "0.6" : "0") }}></div>
           </div>
 
           <div className="text ms-5 w-full block">

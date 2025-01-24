@@ -16,7 +16,7 @@ export default function Select ({label, activeOption="", name, handleUpdate, opt
           px-5 
           h-12 
           mt-2 
-          border-blue 
+          border-green 
           rounded-lg 
           transition duration-300 
           focus:shadow-lg
