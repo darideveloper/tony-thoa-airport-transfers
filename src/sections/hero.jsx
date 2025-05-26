@@ -46,7 +46,7 @@ export default function Hero() {
           Wedding
         </h1>
         <p>
-          November 9 - 12, 2025
+          November 8 - 12, 2025
         </p>
 
         <a
@@ -78,7 +78,7 @@ export default function Hero() {
             mx-auto
           `}
         >
-          Complimentary transportation will be provided for all guests traveling on November 9th and November 12th
+          Complimentary transportation will be provided for all guests traveling on November 8th, November 9th and November 12th
         </p>
 
         <p
