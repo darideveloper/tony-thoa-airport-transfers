@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section 
+    <section
       className={`
         hero
         flex
@@ -14,15 +14,15 @@ export default function Hero() {
     >
       {/* main image */}
       <img
-        src="./imgs/hero.webp"
-        alt="transport image"
+        src='./imgs/hero.webp'
+        alt='transport image'
         className={`
           w-full md:w-1/2 lg:w-7/12
           my-8 md:my-0
         `}
       />
 
-      <div 
+      <div
         className={`
           texts
           px-6
@@ -30,7 +30,6 @@ export default function Hero() {
           w-full md:w-1/2 lg:w-5/12
         `}
       >
-
         <h1
           className={`
             text-5xl lg:text-6xl
@@ -45,13 +44,11 @@ export default function Hero() {
           <br />
           Wedding
         </h1>
-        <p>
-          November 8 - 12, 2025
-        </p>
+        <p>November 8 - 12, 2025</p>
 
         <a
-          href="https://withjoy.com/tony-and-thoa/welcome"
-          target="_blank"
+          href='https://withjoy.com/tony-and-thoa/welcome'
+          target='_blank'
           className={`
             bg-gold hover:bg-white
             text-white hover:text-gold
@@ -78,7 +75,7 @@ export default function Hero() {
             mx-auto
           `}
         >
-          Complimentary transportation will be provided for all guests traveling on November 8th, November 9th and November 12th
+          Complimentary transportation will be provided for all guests traveling on November 8th, on November 9th, on November 10th, and on November 12th.
         </p>
 
         <p
@@ -88,11 +85,9 @@ export default function Hero() {
             mx-auto
           `}
         >
-          Please book and secure your airport transportation service below. 
+          Please book and secure your airport transportation service below.
         </p>
-
       </div>
-
     </section>
   )
 }
